@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{65387B77-9A3D-4669-B854-18ABD83F6BE2}</ProjectGuid>
+    <ProjectTypeGuids>{F85E285D-A4E0-4152-9332-AB1D724D3325};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Mis</RootNamespace>
+    <AssemblyName>Mis</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\GatewayController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IBaseController.cs" />
+    <Compile Include="Controllers\NavController.cs" />
+    <Compile Include="Controllers\NoticeController.cs" />
+    <Compile Include="Controllers\ResourceController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\PremissionController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\Mis.mdf" />
+    <Content Include="App_Data\Mis_log.ldf">
+      <DependentUpon>Mis.mdf</DependentUpon>
+    </Content>
+    <Content Include="Content\css\invalid.css" />
+    <Content Include="Content\css\reset.css" />
+    <Content Include="Content\css\style.css" />
+    <Content Include="Content\images\b.png" />
+    <Content Include="Content\images\bg-body.gif" />
+    <Content Include="Content\images\bg-button-green.gif" />
+    <Content Include="Content\images\bg-content-box.gif" />
+    <Content Include="Content\images\bg-form-field.gif" />
+    <Content Include="Content\images\bg-login-top.png" />
+    <Content Include="Content\images\bg-login.gif" />
+    <Content Include="Content\images\bg-menu-item-current.gif" />
+    <Content Include="Content\images\bg-menu-item-green.gif" />
+    <Content Include="Content\images\bg-radial-gradient.gif" />
+    <Content Include="Content\images\bg-sidebar.gif" />
+    <Content Include="Content\images\bl.png" />
+    <Content Include="Content\images\bonus\background %284%29.jpg" />
+    <Content Include="Content\images\bonus\background.jpg" />
+    <Content Include="Content\images\br.png" />
+    <Content Include="Content\images\icons\bullet_black.png" />
+    <Content Include="Content\images\icons\clock_48.png" />
+    <Content Include="Content\images\icons\comment_48.png" />
+    <Content Include="Content\images\icons\cross.png" />
+    <Content Include="Content\images\icons\cross_circle.png" />
+    <Content Include="Content\images\icons\cross_grey_small.png" />
+    <Content Include="Content\images\icons\exclamation.png" />
+    <Content Include="Content\images\icons\hammer_screwdriver.png" />
+    <Content Include="Content\images\icons\image_add_48.png" />
+    <Content Include="Content\images\icons\information.png" />
+    <Content Include="Content\images\icons\jquery.wysiwyg.gif" />
+    <Content Include="Content\images\icons\paper_content_pencil_48.png" />
+    <Content Include="Content\images\icons\pencil.png" />
+    <Content Include="Content\images\icons\pencil_48.png" />
+    <Content Include="Content\images\icons\tick_circle.png" />
+    <Content Include="Content\images\logo.png" />
+    <Content Include="Content\images\menu-current-arrow.gif" />
+    <Content Include="Content\images\shortcut-button-bg.gif" />
+    <Content Include="Content\images\tl.png" />
+    <Content Include="Content\images\tr.png" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\common.js" />
+    <Content Include="Scripts\facebox.js" />
+    <Content Include="Scripts\jquery.date.js" />
+    <Content Include="Scripts\jquery.datePicker.js" />
+    <Content Include="Scripts\jquery.wysiwyg.js" />
+    <Content Include="Scripts\simpla.jquery.configuration.js" />
+    <Content Include="Views\Gateway\Login.aspx" />
+    <Content Include="Views\Home\Index.aspx" />
+    <Content Include="Views\Nav\Index.ascx" />
+    <Content Include="Views\Notice\Add.aspx" />
+    <Content Include="Views\Notice\Detail.aspx" />
+    <Content Include="Views\Notice\Index.aspx" />
+    <Content Include="Views\Premission\Add.aspx" />
+    <Content Include="Views\Premission\Edit.aspx" />
+    <Content Include="Views\Resource\Add.aspx" />
+    <Content Include="Views\Resource\Edit.aspx" />
+    <Content Include="Views\Resource\Index.aspx" />
+    <Content Include="Views\Premission\Index.aspx" />
+    <Content Include="Views\Role\Add.aspx" />
+    <Content Include="Views\Role\Edit.aspx" />
+    <Content Include="Views\Role\Index.aspx" />
+    <Content Include="Views\Shared\Error.aspx" />
+    <Content Include="Views\User\Add.aspx" />
+    <Content Include="Views\User\Edit.aspx" />
+    <Content Include="Views\User\Index.aspx" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery-1.4.1.js" />
+    <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\MicrosoftAjax.js" />
+    <Content Include="Scripts\MicrosoftAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Mis.Core\Mis.Core.csproj">
+      <Project>{E3607271-EEE6-4B8F-8B12-8FCCA1B39B68}</Project>
+      <Name>Mis.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\Page.Master" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target> -->
+  <Target Name="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(ProjectDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>1151</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mis", "Mis\Mis.csproj", "{65387B77-9A3D-4669-B854-18ABD83F6BE2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mis.Core", "Mis.Core\Mis.Core.csproj", "{E3607271-EEE6-4B8F-8B12-8FCCA1B39B68}"
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{65387B77-9A3D-4669-B854-18ABD83F6BE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65387B77-9A3D-4669-B854-18ABD83F6BE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65387B77-9A3D-4669-B854-18ABD83F6BE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65387B77-9A3D-4669-B854-18ABD83F6BE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3607271-EEE6-4B8F-8B12-8FCCA1B39B68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3607271-EEE6-4B8F-8B12-8FCCA1B39B68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3607271-EEE6-4B8F-8B12-8FCCA1B39B68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3607271-EEE6-4B8F-8B12-8FCCA1B39B68}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
