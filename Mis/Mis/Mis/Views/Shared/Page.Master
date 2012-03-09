@@ -1,0 +1,43 @@
+﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+<%@ Import Namespace="Mis.Core.Model" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>人事信息管理系统</title>
+    <link rel="stylesheet" href="<%:Url.Content("~/Content/css/reset.css") %>" type="text/css"
+        media="screen" />
+    <link rel="stylesheet" href="<%:Url.Content("~/Content/css/style.css") %>" type="text/css"
+        media="screen" />
+    <link rel="stylesheet" href="<%:Url.Content("~/Content/css/invalid.css") %>" media="screen" />
+    <script type="text/javascript" src="<%:Url.Content("~/Scripts/jquery-1.4.1.js") %>"></script>
+        <script type="text/javascript" src="<%:Url.Content("~/Scripts/simpla.jquery.configuration.js") %>"></script>
+    <script type="text/javascript" src="<%:Url.Content("~/Scripts/common.js") %>"></script>
+</head>
+<body class="body-bk">
+    <%:Html.Action("Index","Nav") %>
+    <div id="main-content">
+<%--    <%var premission = ViewData["UserPremission"] as ResourceCacheModel; %>--%>
+    <div class="content-box">
+        <!-- Start Content Box -->
+        <div class="content-box-header">
+            <h3>
+                <asp:ContentPlaceHolder ID="TitleContent" runat="server">
+                </asp:ContentPlaceHolder>
+            </h3>
+            <div class="clear">
+            </div>
+        </div>
+        <!-- End .content-box-header -->
+        <div class="content-box-content">
+             <asp:ContentPlaceHolder ID="MainContent" runat="server">
+        </asp:ContentPlaceHolder>
+        </div>
+        <!-- End .content-box-content -->
+    </div>
+    <!-- End .content-box -->
+       
+    </div>
+</body>
+</html>

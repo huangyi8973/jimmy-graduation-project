@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E3607271-EEE6-4B8F-8B12-8FCCA1B39B68}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Mis.Core</RootNamespace>
+    <AssemblyName>Mis.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Bll\IBll.cs" />
+    <Compile Include="Bll\NoticeBll.cs" />
+    <Compile Include="Bll\ResourceBll.cs" />
+    <Compile Include="Bll\RoleBll.cs" />
+    <Compile Include="Bll\UserBll.cs" />
+    <Compile Include="Cache.cs" />
+    <Compile Include="Dal\BaseDao.cs" />
+    <Compile Include="Dal\IDao.cs" />
+    <Compile Include="Dal\NoticeDao.cs" />
+    <Compile Include="Dal\ResourceDao.cs" />
+    <Compile Include="Dal\RoleDao.cs" />
+    <Compile Include="Dal\RoleToResourceDao.cs" />
+    <Compile Include="Dal\UserDao.cs" />
+    <Compile Include="Dal\UserToRoleDao.cs" />
+    <Compile Include="Entity\NoticeEntity.cs" />
+    <Compile Include="Entity\ResourceEntity.cs" />
+    <Compile Include="Entity\RoleEntity.cs" />
+    <Compile Include="Entity\RoleToResourceEntity.cs" />
+    <Compile Include="Entity\UserEntity.cs" />
+    <Compile Include="Entity\UserToRoleEntity.cs" />
+    <Compile Include="Login.cs" />
+    <Compile Include="Model\BaseViewModel.cs" />
+    <Compile Include="Model\LoginModel.cs" />
+    <Compile Include="Model\NoticeViewModel.cs" />
+    <Compile Include="Model\ResourceCacheModel.cs" />
+    <Compile Include="Model\RoleCacheModel.cs" />
+    <Compile Include="Model\RoleToResourceViewModel.cs" />
+    <Compile Include="Model\RoleViewModel.cs" />
+    <Compile Include="Model\UserCacheModel.cs" />
+    <Compile Include="Model\UserViewModel.cs" />
+    <Compile Include="Model\ResourceViewModel.cs" />
+    <Compile Include="Premission.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="MisSession.cs" />
+    <Compile Include="DBUtilty\SQLHelp.cs" />
+    <Compile Include="UrlAuthorizeAttribute.cs" />
+    <Compile Include="Utilty\UrlTools.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
