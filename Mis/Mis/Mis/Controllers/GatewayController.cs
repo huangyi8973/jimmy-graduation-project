@@ -21,6 +21,7 @@ namespace Mis.Controllers
         }
 
         [HttpPost]
+        [Logging]
         public ActionResult Login(LoginModel loginModel, string url)
         {
             Mis.Core.Login login = new Login();

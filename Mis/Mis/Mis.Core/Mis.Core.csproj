@@ -42,10 +42,12 @@
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bll\IBll.cs" />
+    <Compile Include="Bll\LogBll.cs" />
     <Compile Include="Bll\NoticeBll.cs" />
     <Compile Include="Bll\ResourceBll.cs" />
     <Compile Include="Bll\RoleBll.cs" />
@@ -53,21 +55,25 @@
     <Compile Include="Cache.cs" />
     <Compile Include="Dal\BaseDao.cs" />
     <Compile Include="Dal\IDao.cs" />
+    <Compile Include="Dal\LogDao.cs" />
     <Compile Include="Dal\NoticeDao.cs" />
     <Compile Include="Dal\ResourceDao.cs" />
     <Compile Include="Dal\RoleDao.cs" />
     <Compile Include="Dal\RoleToResourceDao.cs" />
     <Compile Include="Dal\UserDao.cs" />
     <Compile Include="Dal\UserToRoleDao.cs" />
+    <Compile Include="Entity\LogEntity.cs" />
     <Compile Include="Entity\NoticeEntity.cs" />
     <Compile Include="Entity\ResourceEntity.cs" />
     <Compile Include="Entity\RoleEntity.cs" />
     <Compile Include="Entity\RoleToResourceEntity.cs" />
     <Compile Include="Entity\UserEntity.cs" />
     <Compile Include="Entity\UserToRoleEntity.cs" />
+    <Compile Include="LoggingAttribute.cs" />
     <Compile Include="Login.cs" />
     <Compile Include="Model\BaseViewModel.cs" />
     <Compile Include="Model\LoginModel.cs" />
+    <Compile Include="Model\LogViewModel.cs" />
     <Compile Include="Model\NoticeViewModel.cs" />
     <Compile Include="Model\ResourceCacheModel.cs" />
     <Compile Include="Model\RoleCacheModel.cs" />

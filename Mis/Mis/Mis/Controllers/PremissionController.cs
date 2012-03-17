@@ -9,7 +9,7 @@ using Mis.Core;
 
 namespace Mis.Controllers
 {
-    public class PremissionController :BaseController
+    public class PremissionController : BaseController
     {
         //
         // GET: /RoleToResource/
@@ -33,15 +33,16 @@ namespace Mis.Controllers
         [UrlAuthorize]
         public ActionResult Add(int Id)
         {
-            ResourceBll rBll=new ResourceBll();
-            ViewData["ResourceItems"]= rBll.GetResourceWithoutRoleId(Id).Select(m=>new SelectListItem
+            ResourceBll rBll = new ResourceBll();
+            ViewData["ResourceItems"] = rBll.GetResourceWithoutRoleId(Id).Select(m => new SelectListItem
                                                                                   {
                                                                                       Text = m.ResourceName,
                                                                                       Value = m.Id.ToString()
                                                                                   });
-            return View(new RoleToResourceViewModel{RoleId = Id});
+            return View(new RoleToResourceViewModel { RoleId = Id });
         }
 
+        [Logging]
         [UrlAuthorize]
         [HttpPost]
         public RedirectToRouteResult Add(RoleToResourceViewModel vm)
@@ -52,29 +53,31 @@ namespace Mis.Controllers
         }
 
         [UrlAuthorize]
+        [Logging]
         public RedirectToRouteResult Del(int id)
         {
-            ResourceBll resourceBll=new ResourceBll();
-            int roleId=resourceBll.GetPremissionModel(id).RoleId;
+            ResourceBll resourceBll = new ResourceBll();
+            int roleId = resourceBll.GetPremissionModel(id).RoleId;
             resourceBll.PremissionDel(id);
-            return RedirectToAction("Index",new{roleId=roleId});
+            return RedirectToAction("Index", new { roleId = roleId });
         }
 
         [UrlAuthorize]
         public ActionResult Edit(int id)
         {
-            ResourceBll resourceBll=new ResourceBll();
+            ResourceBll resourceBll = new ResourceBll();
             var vm = resourceBll.GetPremissionViewModelById(id);
             return View(vm);
         }
 
         [HttpPost]
+        [Logging]
         [UrlAuthorize]
         public RedirectToRouteResult Edit(RoleToResourceViewModel vm)
         {
             ResourceBll resourceBll = new ResourceBll();
             resourceBll.PremissionUpdate(vm);
-            return RedirectToAction("Index",new{roleId=vm.RoleId});
+            return RedirectToAction("Index", new { roleId = vm.RoleId });
         }
 
         public override string GetControllerName()
