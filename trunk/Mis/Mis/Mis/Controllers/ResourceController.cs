@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Mis.Core;
 using Mis.Core.Bll;
 using Mis.Core.Model;
 using Mis.Core.Entity;
@@ -25,7 +26,7 @@ namespace Mis.Controllers
 
         //
         // GET: /Resource/Create
-
+        [UrlAuthorize]
         public ActionResult Add()
         {
             return View();
@@ -33,8 +34,9 @@ namespace Mis.Controllers
 
         //
         // POST: /Resource/Create
-
+        [UrlAuthorize]
         [HttpPost]
+        [Logging]
         public ActionResult Add(ResourceViewModel vm)
         {
             try
@@ -51,7 +53,7 @@ namespace Mis.Controllers
 
         //
         // GET: /Resource/Edit/5
-
+        [UrlAuthorize]
         public ActionResult Edit(int id)
         {
             if (id > 0)
@@ -66,8 +68,9 @@ namespace Mis.Controllers
 
         //
         // POST: /Resource/Edit/5
-
+        [UrlAuthorize]
         [HttpPost]
+        [Logging]
         public ActionResult Edit(ResourceViewModel vm)
         {
             try
@@ -84,7 +87,8 @@ namespace Mis.Controllers
 
         //
         // GET: /Resource/Delete/5
-
+        [UrlAuthorize]
+        [Logging]
         public RedirectToRouteResult Del(int id)
         {
             if (id > 0)

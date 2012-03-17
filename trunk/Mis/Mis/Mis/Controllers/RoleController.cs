@@ -11,7 +11,7 @@ using Mis.Core;
 namespace Mis.Controllers
 {
     [HandleError]
-    public class RoleController : BaseController, IBaseController
+    public class RoleController : BaseController
     {
         //
         // GET: /Role/
@@ -47,6 +47,7 @@ namespace Mis.Controllers
         // POST: /Role/Add
         [UrlAuthorize]
         [HttpPost]
+        [Logging]
         public ActionResult Add(RoleViewModel vm)
         {
             try
@@ -80,6 +81,7 @@ namespace Mis.Controllers
         // POST: /Role/Edit/5
         [UrlAuthorize]
         [HttpPost]
+        [Logging]
         public ActionResult Edit(RoleViewModel vm)
         {
             try
@@ -97,6 +99,7 @@ namespace Mis.Controllers
         //
         // GET: /Role/Delete/5
         [UrlAuthorize]
+        [Logging]
         public RedirectToRouteResult Del(int id)
         {
             if (id > 0)

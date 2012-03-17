@@ -7,6 +7,7 @@
     <% using (Html.BeginForm())
        {%>
     <%:Html.ValidationSummary(true)%>
+    <%:Html.HiddenFor(model=>model.ResourceId) %>
     <p>
     <label>资源ID</label>
     <%:Model.ResourceId %>

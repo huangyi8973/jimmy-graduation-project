@@ -74,6 +74,7 @@
     <Compile Include="Controllers\GatewayController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IBaseController.cs" />
+    <Compile Include="Controllers\LogController.cs" />
     <Compile Include="Controllers\NavController.cs" />
     <Compile Include="Controllers\NoticeController.cs" />
     <Compile Include="Controllers\ResourceController.cs" />
@@ -138,6 +139,7 @@
     <Content Include="Scripts\simpla.jquery.configuration.js" />
     <Content Include="Views\Gateway\Login.aspx" />
     <Content Include="Views\Home\Index.aspx" />
+    <Content Include="Views\Log\Index.aspx" />
     <Content Include="Views\Nav\Index.ascx" />
     <Content Include="Views\Notice\Add.aspx" />
     <Content Include="Views\Notice\Detail.aspx" />
@@ -155,7 +157,9 @@
     <Content Include="Views\User\Add.aspx" />
     <Content Include="Views\User\Edit.aspx" />
     <Content Include="Views\User\Index.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
