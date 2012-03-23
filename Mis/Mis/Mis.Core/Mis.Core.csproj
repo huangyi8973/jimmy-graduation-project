@@ -46,14 +46,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bll\DeparmentBll.cs" />
     <Compile Include="Bll\IBll.cs" />
     <Compile Include="Bll\LogBll.cs" />
     <Compile Include="Bll\NoticeBll.cs" />
     <Compile Include="Bll\ResourceBll.cs" />
     <Compile Include="Bll\RoleBll.cs" />
     <Compile Include="Bll\UserBll.cs" />
+    <Compile Include="Bll\UserInfoBll.cs" />
     <Compile Include="Cache.cs" />
     <Compile Include="Dal\BaseDao.cs" />
+    <Compile Include="Dal\DeparmentDao.cs" />
     <Compile Include="Dal\IDao.cs" />
     <Compile Include="Dal\LogDao.cs" />
     <Compile Include="Dal\NoticeDao.cs" />
@@ -61,17 +64,21 @@
     <Compile Include="Dal\RoleDao.cs" />
     <Compile Include="Dal\RoleToResourceDao.cs" />
     <Compile Include="Dal\UserDao.cs" />
+    <Compile Include="Dal\UserInfoDao.cs" />
     <Compile Include="Dal\UserToRoleDao.cs" />
+    <Compile Include="Entity\DeparmentEntity.cs" />
     <Compile Include="Entity\LogEntity.cs" />
     <Compile Include="Entity\NoticeEntity.cs" />
     <Compile Include="Entity\ResourceEntity.cs" />
     <Compile Include="Entity\RoleEntity.cs" />
     <Compile Include="Entity\RoleToResourceEntity.cs" />
     <Compile Include="Entity\UserEntity.cs" />
+    <Compile Include="Entity\UserInfoEntity.cs" />
     <Compile Include="Entity\UserToRoleEntity.cs" />
     <Compile Include="LoggingAttribute.cs" />
     <Compile Include="Login.cs" />
     <Compile Include="Model\BaseViewModel.cs" />
+    <Compile Include="Model\DeparmentViewModel.cs" />
     <Compile Include="Model\LoginModel.cs" />
     <Compile Include="Model\LogViewModel.cs" />
     <Compile Include="Model\NoticeViewModel.cs" />
@@ -80,6 +87,7 @@
     <Compile Include="Model\RoleToResourceViewModel.cs" />
     <Compile Include="Model\RoleViewModel.cs" />
     <Compile Include="Model\UserCacheModel.cs" />
+    <Compile Include="Model\UserInfoViewModel.cs" />
     <Compile Include="Model\UserViewModel.cs" />
     <Compile Include="Model\ResourceViewModel.cs" />
     <Compile Include="Premission.cs" />
