@@ -14,8 +14,9 @@
                 <%:Html.PasswordFor(m=>m.Password) %>
               </p>
               <p>
-                <label>角色</label>
-                <%:Html.DropDownListFor(m=>m.RoleId,ViewData["RoleList"] as IEnumerable<SelectListItem>) %>
+                <label>角色(请按住Ctrl键进行多选)</label>
+                <%:Html.ListBoxFor(m => m.RoleIds, new SelectList(ViewData["RoleList"] as IEnumerable<SelectListItem>, "Value", "Text"))%>
+                <%--<%:Html.DropDownListFor(m=>m.RoleId,ViewData["RoleList"] as IEnumerable<SelectListItem>) %>--%>
               </p>
               <p>
                 <input type="submit" class="button" value="保存" />

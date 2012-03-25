@@ -1,4 +1,5 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<Mis.Core.Model.UserCacheModel>" %>
+<%@ Import Namespace="Mis.Core.Model" %>
 
 <div id="sidebar">
         <div id="sidebar-wrapper">
@@ -11,7 +12,16 @@
             <div id="profile-links">
                 您好,
                 <%:Model.UserName %><br />
-                您的身份是：<%:Model.Role.RoleName %>
+                您的身份是：
+                <%
+                        string roleNames = "";
+                        foreach (RoleCacheModel role in Model.Roles)
+                        {
+                            roleNames += role.RoleName + "，";
+                        }
+                        roleNames=roleNames.Remove(roleNames.Length - 1, 1);
+                    %>
+                    <%:roleNames %>
                 <br />
                 <br />
                 <%:Html.ActionLink("注销","Logout","Gateway") %>

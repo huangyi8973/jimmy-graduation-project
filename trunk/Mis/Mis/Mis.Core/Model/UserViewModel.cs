@@ -11,9 +11,11 @@ namespace Mis.Core.Model
     {
         public int UserId { get; set; }
         public int RoleId { get; set; }
+        public int[] RoleIds { get; set; }
         public string Password { get; set; }
         public string UserName { get; set; }
         public string RoleName { get; set; }
+        public string[] RoleNames { get; set; }
         public int UserToRoleId { get; set; }
     }
 }

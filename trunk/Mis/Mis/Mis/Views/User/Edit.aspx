@@ -14,8 +14,8 @@
     </p>
     <p>
         <label>
-            角色</label>
-        <%:Html.DropDownListFor(m=>m.RoleId,ViewData["RoleList"] as IEnumerable<SelectListItem>) %>
+            角色(请按住Ctrl键进行多选)</label>
+        <%:Html.ListBoxFor(m => m.RoleIds, new SelectList(ViewData["RoleList"] as IEnumerable<SelectListItem>, "Value", "Text"))%>
     </p>
     <p>
         <input type="submit" value="保存" /></p>

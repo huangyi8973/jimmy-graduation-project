@@ -8,7 +8,7 @@ using Mis.Core;
 
 namespace Mis.Controllers
 {
-    public class BaseController : Controller,IBaseController
+    public abstract class BaseController : Controller,IBaseController
     {
         //
         // GET: /Base/
@@ -21,9 +21,6 @@ namespace Mis.Controllers
             ViewData["UserPremission"] = premission;
         }
 
-        public virtual string GetControllerName()
-        {
-            return string.Empty;
-        }
+        public abstract string GetControllerName();
     }
 }

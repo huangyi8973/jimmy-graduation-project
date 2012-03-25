@@ -33,5 +33,14 @@ namespace Mis.Core.Dal
                                  }).FirstOrDefault();
         }
 
+        public List<UserToRoleEntity> GetEntitiesByUserId(int userId)
+        {
+            return this.Find(new UserToRoleEntity
+                                 {
+                                     UserId = userId
+                                 }).ToList();
+        }
+
+
     }
 }

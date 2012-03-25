@@ -33,39 +33,47 @@ namespace Mis.Core
             this.checkModel = checkModel;
         }
 
-        public override void OnAuthorization(AuthorizationContext filterContext)
+        protected override bool AuthorizeCore(HttpContextBase httpContext)
         {
+            bool result = true;
+            //check user is in session(user have logined)
             MisSession session = new MisSession();
-            HttpContextBase httpContextBase = filterContext.HttpContext;
-            if (!session.SessionStateCheck(httpContextBase.Session))
+            if (!session.SessionStateCheck(httpContext.Session))
             {
-                filterContext.Result = new RedirectResult("~/Gateway/Login");
-                return;
+                result = false;
             }
-
-            //判断验证模式
+            //check authorize model(loginOnly,all)
             if (checkModel.Equals(Model.All))
             {
                 //have logined
                 Cache cache = new Cache();
-                if (httpContextBase.Session != null)
+                if (httpContext.Session != null&&httpContext.Session["UserName"]!=null)
                 {
-                    UserCacheModel userCacheModel = cache.GetUserCache(httpContextBase.Session["UserName"].ToString());
+                    UserCacheModel userCacheModel = cache.GetUserCache(httpContext.Session["UserName"].ToString());
                     Premission premission = new Premission();
                     if (userCacheModel != null)
                     {
-                        if (!premission.Check(userCacheModel, httpContextBase.Request.Path))
+                        //check premission
+                        if (!premission.Check(userCacheModel, httpContext.Request.Path))
                         {
-                            filterContext.Result = new RedirectResult("~/Gateway/Login");
-                            return;
+                            result = false;
                         }
                     }
                     else
                     {
-                        filterContext.Result = new RedirectResult("~/Gateway/Login");
-                        return;
+                        result = false;
                     }
                 }
+            }
+            return result;
+        }
+
+        public override void OnAuthorization(AuthorizationContext filterContext)
+        {
+            if (!AuthorizeCore(filterContext.HttpContext))
+            {
+                filterContext.Result = new RedirectResult("~/Gateway/Login");
+                return;
             }
         }
 

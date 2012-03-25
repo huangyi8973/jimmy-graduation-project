@@ -39,7 +39,15 @@
                     <%:user.UserName %>
                 </td>
                 <td>
-                    <%:user.RoleName %>
+                    <%
+                        string roleNames = "";
+                        foreach (string roleName in user.RoleNames)
+                        {
+                            roleNames += roleName + "，";
+                        }
+                        roleNames=roleNames.Remove(roleNames.Length - 1, 1);
+                    %>
+                    <%:roleNames %>
                 </td>
                 <td>
                     <%
