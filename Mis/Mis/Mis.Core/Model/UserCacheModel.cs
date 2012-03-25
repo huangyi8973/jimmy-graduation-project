@@ -9,7 +9,7 @@ namespace Mis.Core.Model
     {
         public string UserName { get; set; }
         public string Id { get; set; }
-        public RoleCacheModel Role { get; set; }
+        public List<RoleCacheModel> Roles { get; set; }
         public List<ResourceCacheModel> PremissionList { get; set; }
     }
 }

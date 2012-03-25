@@ -22,18 +22,31 @@ namespace Mis.Core.Bll
 
         public List<UserViewModel> GetList()
         {
-            List<UserViewModel> userList=new List<UserViewModel>();
+            List<UserViewModel> userList = new List<UserViewModel>();
+            //获取所有用户实体
             List<UserEntity> userEntities = userDao.Find();
             foreach (var userEntity in userEntities)
             {
-                UserToRoleEntity urEntity = urDao.Find(new UserToRoleEntity {UserId = userEntity.Id}).FirstOrDefault();
-                RoleEntity roleEntity = roleDao.Find(new RoleEntity {Id = urEntity.RoleId}).FirstOrDefault();
-                UserViewModel vm=new UserViewModel
+                List<int> roleIds=new List<int>();
+                List<string> roleNames = new List<string>();
+                //获取用户对应的角色信息
+                List<UserToRoleEntity> urEntities = urDao.Find(new UserToRoleEntity {UserId = userEntity.Id});
+                foreach (UserToRoleEntity userToRoleEntity in urEntities)
+                {
+                    RoleEntity roleEntity = roleDao.Find(new RoleEntity { Id = userToRoleEntity.RoleId }).FirstOrDefault();
+                    if (roleEntity != null)
+                    {
+                        roleIds.Add(roleEntity.Id);
+                        roleNames.Add(roleEntity.RoleName);
+                    }
+                }
+                
+                UserViewModel vm = new UserViewModel
                                      {
                                          UserId = userEntity.Id,
                                          UserName = userEntity.UserName,
-                                         RoleId = roleEntity.Id,
-                                         RoleName = roleEntity.RoleName
+                                         RoleIds = roleIds.ToArray(),
+                                         RoleNames = roleNames.ToArray()
                                      };
                 userList.Add(vm);
             }
@@ -54,45 +67,105 @@ namespace Mis.Core.Bll
             else
             {
                 int insertedId = userDao.Add(userEntity);
-                var userToRoleEntity = new UserToRoleEntity
-                                           {
-                                               UserId = insertedId,
-                                               RoleId = vm.RoleId
-                                           };
-                urDao.Add(userToRoleEntity);
+                foreach (int roleId in vm.RoleIds)
+                {
+                    var userToRoleEntity = new UserToRoleEntity
+                    {
+                        UserId = insertedId,
+                        RoleId = roleId
+                    };
+                    urDao.Add(userToRoleEntity);
+                }
+
             }
         }
 
+
         public UserViewModel GetModel(int id)
         {
-            UserViewModel vm =new UserViewModel();
+            UserViewModel vm = new UserViewModel();
             UserEntity userEntity = userDao.GetEntity(id);
-            if(null!=userEntity)
+            if (null != userEntity)
             {
                 UserToRoleDao dao = new UserToRoleDao();
-                UserToRoleEntity urEntity = dao.GetEntityByUserId(userEntity.Id);
-                if(null!=urEntity)
+                List<UserToRoleEntity> urEntities = dao.GetEntitiesByUserId(userEntity.Id);
+                List<int> roleIds=new List<int>();
+                List<string> roleNames=new List<string>();
+                if (null != urEntities&&urEntities.Count>0)
                 {
-                    RoleEntity roleEntity = roleDao.GetEntity(urEntity.RoleId);
-                    vm.UserId = userEntity.Id;
-                    vm.UserName = userEntity.UserName;
-                    vm.RoleId = roleEntity.Id;
-                    vm.RoleName = roleEntity.RoleName;
-                    vm.UserToRoleId = urEntity.Id;
+                    foreach(UserToRoleEntity entity in urEntities)
+                    {
+                        RoleEntity roleEntity = roleDao.GetEntity(entity.RoleId);
+                        if(roleEntity!=null)
+                        {
+                            roleIds.Add(roleEntity.Id);
+                            roleNames.Add(roleEntity.RoleName);
+                        }
+                    }
                 }
+                vm.UserId = userEntity.Id;
+                vm.UserName = userEntity.UserName;
+                vm.RoleIds = roleIds.ToArray();
+                vm.RoleNames = roleNames.ToArray();
+                //vm.UserToRoleId = urEntities.Id;
             }
             return vm;
         }
 
         public void Update(UserViewModel vm)
         {
-            UserToRoleEntity urEntity = new UserToRoleEntity
-                                            {
-                                                RoleId = vm.RoleId,
-                                                UserId = vm.UserId,
-                                                Id=vm.UserToRoleId
-                                            };
-            urDao.Update(urEntity);
+            //数据库中用户的角色信息
+            List<UserToRoleEntity> urEntities = urDao.Find(new UserToRoleEntity
+                                                               {
+                                                                   UserId = vm.UserId
+                                                               });
+            //编辑过后用户的角色信息
+            List<int> roleIds = new List<int>(vm.RoleIds);
+            //待删除的角色信息
+            List<int> delUREntityIds;
+            //新增的角色信息
+            List<int> addRoleIds;
+            //数据库中改用户已拥有的角色ID
+            List<int> roleIdsInDB = new List<int>(urEntities.Select(m => m.RoleId));
+            //比较已有角色信息和编辑后的角色信息
+            UserToRoleCompare(roleIdsInDB,roleIds,out delUREntityIds,out addRoleIds);
+            
+            //删除不再拥有的角色
+            foreach(int roleId in delUREntityIds)
+            {
+                urDao.Del(new UserToRoleEntity {RoleId = roleId, UserId = vm.UserId});
+            }
+            //新增用户角色信息
+            foreach(int roleId in addRoleIds)
+            {
+                urDao.Add(new UserToRoleEntity {RoleId = roleId, UserId = vm.UserId});
+            }
+        }
+
+        /// <summary>
+        /// 比较数据库中的角色信息和编辑过后的角色信息，计算出需要删除和新增的角色信息
+        /// </summary>
+        /// <param name="roleIdsInDB"></param>
+        /// <param name="roleIds"></param>
+        /// <param name="delUREntityIds"></param>
+        /// <param name="addRoleIds"></param>
+        private void UserToRoleCompare(List<int> roleIdsInDB,List<int> roleIds,out List<int> delUREntityIds,out List<int> addRoleIds)
+        {
+            delUREntityIds = new List<int>(roleIdsInDB);
+            addRoleIds = new List<int>(roleIds);
+            if (roleIdsInDB != null)
+            {
+                foreach (int roleId in roleIds)
+                {
+                    //如果角色信息没有改变，就从列表里删除
+                    if (roleIdsInDB.Contains(roleId))
+                    {
+                        addRoleIds.Remove(roleId);
+                        delUREntityIds.Remove(roleId);
+                    }
+                }
+            }
+            
         }
 
         public void Del(int id)

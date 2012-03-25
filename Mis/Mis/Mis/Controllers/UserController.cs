@@ -12,14 +12,14 @@ using Mis.Core.Model;
 namespace Mis.Controllers
 {
     [HandleError]
-    public class UserController : BaseController,IBaseController
+    public class UserController : BaseController
     {
         //
         // GET: /User/
         [UrlAuthorize]
         public ActionResult Index()
         {
-            UserBll userBll=new UserBll();
+            UserBll userBll = new UserBll();
             ViewData["UserList"] = userBll.GetList();
             GetPremission();
             return View();
@@ -36,11 +36,11 @@ namespace Mis.Controllers
         [HttpPost]
         public RedirectToRouteResult Add(UserViewModel vm)
         {
-            if(vm!=null)
+            if (vm != null)
             {
-                UserBll userBll=new UserBll();
+                UserBll userBll = new UserBll();
                 userBll.Add(vm);
-                
+
             }
             return RedirectToAction("Index");
         }
@@ -49,14 +49,46 @@ namespace Mis.Controllers
         public ActionResult Edit(int id)
         {
             UserViewModel vm = null;
-            ViewData["RoleList"] = GetRoleList();
+            RoleBll roleBll = new RoleBll();
+            List<RoleViewModel> roleViewModels = roleBll.GetList();
             if (id > 0)
             {
                 UserBll userBll = new UserBll();
+                //获取用户信息的ViewModel
                 vm = userBll.GetModel(id);
+                //用户保存角色选项
+                List<SelectListItem> items = new List<SelectListItem>();
+                //遍历角色
+                foreach (var roleVm in roleViewModels)
+                {
+                    SelectListItem item = null;
+                    //如果当前的角色是用户所拥有的，就把selected设为true
+                    if (vm.RoleIds.Contains(roleVm.RoleId))
+                    {
+                        item = new SelectListItem
+                            {
+                                Text = roleVm.RoleName,
+                                Value = roleVm.RoleId.ToString(),
+                                Selected = true
+                            };
+                    }
+                    else
+                    {
+                        item = new SelectListItem
+                            {
+                                Text = roleVm.RoleName,
+                                Value = roleVm.RoleId.ToString(),
+                                Selected = false
+                            };
+                    }
+                    items.Add(item);
+                }
+
+                //roleSelectList = new SelectList(items);
+                ViewData["RoleList"] = items;
                 return View(vm);
             }
-
+            ViewData["RoleList"] = GetRoleList();
             return View(new UserViewModel());
         }
 

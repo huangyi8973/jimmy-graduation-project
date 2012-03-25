@@ -44,6 +44,13 @@ namespace Mis.Core
             }
             return IsPass;
         }
+        public void Merge(ref ResourceCacheModel target,params ResourceCacheModel[] models)
+        {
+            foreach(var model in models)
+            {
+                target.Value = target.Value | model.Value;
+            }
+        }
 
         public static readonly int VIEW = 1;
         public static readonly int ADD = 2;

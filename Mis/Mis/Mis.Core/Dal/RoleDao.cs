@@ -22,6 +22,22 @@ namespace Mis.Core.Dal
             return roleCacheModel;
         }
 
+        public List<RoleCacheModel> GetRolesByUserId(int userId)
+        {
+            string sql = "select r.Id,r.RoleName from Mis_Role r,Mis_UserToRole ur where ur.UserId=@userid and ur.RoleId=r.Id";
+            DataTable dt = SQLHelp.ExecuteQuery(sql, CommandType.Text, new SqlParameter("userid", userId));
+            List<RoleCacheModel> roleCacheModels=new List<RoleCacheModel>();
+            foreach(DataRow dr in dt.Rows)
+            {
+                RoleCacheModel roleCacheModel = new RoleCacheModel();
+                roleCacheModel.Id = dr["Id"].ToString();
+                roleCacheModel.RoleName = dr["RoleName"].ToString();
+                roleCacheModels.Add(roleCacheModel);
+            }
+
+            return roleCacheModels;
+        }
+
         public RoleDao()
         {
             this._tableName = "Mis_Role";
