@@ -10,7 +10,7 @@ namespace Mis.Core.Entity
         public int Id { get; set;}
         public string ResourceName { get; set; }
         public string Uri { get; set; }
-        public string OperateValue { get; set; }
+        public int OperateValue { get; set; }
         public int CanShowInNav { get; set; }
     }
 }

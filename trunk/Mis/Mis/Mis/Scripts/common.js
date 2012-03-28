@@ -47,3 +47,41 @@ function page(pagenow, pagecount, n, uri, context) {
     }
     $(context).html(result_str);
 }
+
+function PremissionOperate () {
+    var canView = $("#CanView");
+    var canDetail = $("#CanDetail");
+    var canAdd = $("#CanAdd");
+    var canEdit = $("#CanEdit");
+    var canDel = $("#CanDel");
+
+    canView.click(function () {
+        if ($(this).attr("checked") == false) {
+            canDetail.attr("checked", false);
+            canAdd.attr("checked", false);
+            canEdit.attr("checked", false);
+            canDel.attr("checked", false);
+        }
+    });
+
+    canDetail.click(function () {
+        if ($(this).attr("checked") == true) {
+            canView.attr("checked", true);
+        }
+    });
+    canAdd.click(function () {
+        if ($(this).attr("checked") == true) {
+            canView.attr("checked", true);
+        }
+    });
+    canEdit.click(function () {
+        if ($(this).attr("checked") == true) {
+            canView.attr("checked", true);
+        }
+    });
+    canDel.click(function () {
+        if ($(this).attr("checked") == true) {
+            canView.attr("checked", true);
+        }
+    });
+}
