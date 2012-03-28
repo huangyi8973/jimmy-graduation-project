@@ -28,7 +28,8 @@ namespace Mis.Core.Bll
                                                               CanShowInNav = m.CanShowInNav == 1 ? true : false,
                                                               ResourceId = m.Id,
                                                               ResourceName = m.ResourceName,
-                                                              Uri = m.Uri
+                                                              Uri = m.Uri,
+                                                              Value = m.OperateValue
                                                           }).ToList();
             return vmlist;
         }
@@ -39,7 +40,8 @@ namespace Mis.Core.Bll
                                      {
                                          CanShowInNav = vm.CanShowInNav ? 1 : 0,
                                          ResourceName = vm.ResourceName,
-                                         Uri = vm.Uri
+                                         Uri = vm.Uri,
+                                         OperateValue = vm.Value
                                      };
             resourceDao.Add(resourceEntity);
         }
@@ -52,7 +54,8 @@ namespace Mis.Core.Bll
                              ResourceId = entity.Id,
                              ResourceName = entity.ResourceName,
                              CanShowInNav = entity.CanShowInNav == 1 ? true : false,
-                             Uri = entity.Uri
+                             Uri = entity.Uri,
+                             Value = entity.OperateValue
                          };
             return vm;
         }
@@ -80,7 +83,7 @@ namespace Mis.Core.Bll
                              Value = entity.Value,
                              Id = entity.Id,
                              ResourceName = premissonEntity.ResourceName,
-                             RoleId =entity.RoleId
+                             RoleId =entity.RoleId,
                          };
             return vm;
 
@@ -94,7 +97,8 @@ namespace Mis.Core.Bll
                                  Id = vm.ResourceId,
                                  CanShowInNav = vm.CanShowInNav ? 1 : 0,
                                  ResourceName = vm.ResourceName,
-                                 Uri = vm.Uri
+                                 Uri = vm.Uri,
+                                 OperateValue = vm.Value
                              };
             resourceDao.Update(entity);
         }

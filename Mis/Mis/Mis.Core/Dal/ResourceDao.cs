@@ -42,7 +42,7 @@ namespace Mis.Core.Dal
                 re.Id = Convert.ToInt32(dr["Id"]);
                 re.ResourceName = dr["ResourceName"].ToString();
                 re.Uri = dr["Uri"].ToString();
-                re.OperateValue = dr["OperateValue"].ToString();
+                re.OperateValue = Convert.ToInt32(dr["OperateValue"]);
                 re.CanShowInNav = Convert.ToInt32(dr["CanShowInNav"]);
                 list.Add(re);
             }

@@ -16,6 +16,12 @@
             <%: Html.TextBoxFor(model => model.Uri)%>
        </p>
        <p>
+            <label>所拥有的操作</label>
+            列表<%:Html.CheckBoxFor(m=>m.CanView) %>&nbsp;&nbsp; 查看<%:Html.CheckBoxFor(m=>m.CanDetail) %>&nbsp;&nbsp;
+                    添加<%:Html.CheckBoxFor(m=>m.CanAdd) %>&nbsp;&nbsp; 修改<%:Html.CheckBoxFor(m=>m.CanEdit) %>&nbsp;&nbsp;
+                    删除<%:Html.CheckBoxFor(m=>m.CanDel) %>&nbsp;&nbsp;
+       </p>
+       <p>
         <label>在导航栏中显示</label>
         <%:Html.CheckBoxFor(model=>model.CanShowInNav) %>
        </p>
@@ -26,4 +32,7 @@
     <p>
         <%: Html.ActionLink("返回列表", "Index") %>
     </p>
+    <script type="text/javascript">
+        PremissionOperate();
+    </script>
 </asp:Content>
