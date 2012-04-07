@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Mis.Core.Bll;
+using Mis.Core.Entity;
 using Mis.Core.Model;
 using Mis.Core;
 
@@ -34,11 +35,13 @@ namespace Mis.Controllers
         public ActionResult Add(int Id)
         {
             ResourceBll rBll = new ResourceBll();
-            ViewData["ResourceItems"] = rBll.GetResourceWithoutRoleId(Id).Select(m => new SelectListItem
-                                                                                  {
-                                                                                      Text = m.ResourceName,
-                                                                                      Value = m.Id.ToString()
-                                                                                  });
+            List<ResourceEntity> list = rBll.GetResourceWithoutRoleId(Id);
+            list.Insert(0, new ResourceEntity { Id = 0, ResourceName = "请选择" });
+            ViewData["ResourceItems"] = list.Select(m => new SelectListItem
+                                                    {
+                                                        Text = m.ResourceName,
+                                                        Value = m.Id.ToString()
+                                                    });
             return View(new RoleToResourceViewModel { RoleId = Id });
         }
 
@@ -83,6 +86,14 @@ namespace Mis.Controllers
         public override string GetControllerName()
         {
             return "premission";
+        }
+
+        
+        public JsonResult GetResourceActionByResourceId(int id)
+        {
+            ResourceBll bll = new ResourceBll();
+            ResourceViewModel vm = bll.GetModel(id);
+            return Json(vm);
         }
     }
 }

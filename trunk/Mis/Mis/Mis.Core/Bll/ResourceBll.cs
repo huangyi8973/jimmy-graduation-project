@@ -49,15 +49,19 @@ namespace Mis.Core.Bll
         public ResourceViewModel GetModel(int id)
         {
             var entity = resourceDao.GetEntity(id);
-            var vm = new ResourceViewModel
-                         {
-                             ResourceId = entity.Id,
-                             ResourceName = entity.ResourceName,
-                             CanShowInNav = entity.CanShowInNav == 1 ? true : false,
-                             Uri = entity.Uri,
-                             Value = entity.OperateValue
-                         };
-            return vm;
+            if (entity != null)
+            {
+                var vm = new ResourceViewModel
+                             {
+                                 ResourceId = entity.Id,
+                                 ResourceName = entity.ResourceName,
+                                 CanShowInNav = entity.CanShowInNav == 1 ? true : false,
+                                 Uri = entity.Uri,
+                                 Value = entity.OperateValue
+                             };
+                return vm;
+            }
+            return null;
         }
 
         public RoleToResourceViewModel GetPremissionModel(int id)
@@ -169,13 +173,16 @@ namespace Mis.Core.Bll
 
         public void PremissionAdd(RoleToResourceViewModel vm)
         {
-            var entity = new RoleToResourceEntity
-                             {
-                                 ResourceId = vm.ResourceId,
-                                 RoleId = vm.RoleId,
-                                 Value = vm.Value
-                             };
-            rrDao.Add(entity);
+            if (vm.ResourceId > 0)
+            {
+                var entity = new RoleToResourceEntity
+                                 {
+                                     ResourceId = vm.ResourceId,
+                                     RoleId = vm.RoleId,
+                                     Value = vm.Value
+                                 };
+                rrDao.Add(entity);
+            }
         }
         
         public void PremissionUpdate(RoleToResourceViewModel vm)
