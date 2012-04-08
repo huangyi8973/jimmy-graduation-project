@@ -4,11 +4,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>无标题文档</title>
+<title>人事信息管理系统</title>
 <link rel="stylesheet" href="<%:Url.Content("~/Content/css/reset.css") %>" type="text/css" media="screen" />
 <link rel="stylesheet" href="<%:Url.Content("~/Content/css/style.css") %>" type="text/css" media="screen" />
-<link rel="stylesheet" href="<%:Url.Content("~/Content/css/invalid.css") %>" type="text/css" media="screen" />	
-
+<link rel="stylesheet" href="<%:Url.Content("~/Content/css/invalid.css") %>" type="text/css" media="screen" />
+ <script type="text/javascript" src="<%:Url.Content("~/Scripts/jquery-1.4.1.js") %>"></script>	
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#UserName")[0].focus();
+    });
+</script>
 </head>
 
 <body id="login">
