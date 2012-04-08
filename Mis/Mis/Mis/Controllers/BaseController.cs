@@ -8,10 +8,9 @@ using Mis.Core;
 
 namespace Mis.Controllers
 {
+    [HandleError]
     public abstract class BaseController : Controller,IBaseController
     {
-        //
-        // GET: /Base/
         protected void GetPremission()
         {
             string userName = Session["UserName"].ToString();
