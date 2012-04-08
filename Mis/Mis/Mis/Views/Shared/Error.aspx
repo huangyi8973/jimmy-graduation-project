@@ -1,15 +1,13 @@
-﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Error.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml" >
-<head runat="server">
-    <title>Error</title>
-</head>
-<body>
+<asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
+    Error
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div>
-    <h2 style="color:Red;">系统出错啦 T_T</h2>
-    <p><%:ViewData["ErrorMessage"] %></p>
+        <h2 style="color: Red;">
+            系统出错啦 T_T</h2>
+        <p>
+            <%:ViewData["ErrorMessage"] %></p>
     </div>
-</body>
-</html>
+</asp:Content>
