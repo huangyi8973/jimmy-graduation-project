@@ -68,7 +68,6 @@ namespace Mis.Core.Bll
             if(urList.Count>0)
             {
                 throw new Exception("角色下有用户存在，不能删除角色");
-
             }
             else
             {

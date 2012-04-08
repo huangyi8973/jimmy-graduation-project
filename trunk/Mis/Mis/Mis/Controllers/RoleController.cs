@@ -10,12 +10,12 @@ using Mis.Core;
 
 namespace Mis.Controllers
 {
-    [HandleError]
+    
     public class RoleController : BaseController
     {
         //
         // GET: /Role/
-
+        [UrlAuthorize]
         public ActionResult Index()
         {
             RoleBll roleBll = new RoleBll();
