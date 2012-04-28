@@ -249,15 +249,6 @@ namespace Mis.Core.Dal
             if (null != obj)
             {
                 //通过反射获得实例里的字段
-
-                //Type type = obj.GetType();
-                // Hashtable ht = new Hashtable();
-                // Hashtable typeHt = new Hashtable();
-                // foreach (PropertyInfo pi in type.GetProperties())
-                // {
-                //     ht.Add(pi.Name, pi.GetValue(obj, null));
-                //     typeHt.Add(pi.Name, pi.PropertyType);
-                // }
                 Hashtable htProperties = this.GetProperties(obj);
  
 
