@@ -177,5 +177,12 @@ namespace Mis.Core.Bll
                           });
             userDao.Del(id);
         }
+
+        public bool initUserPassword(int userId)
+        {
+            //默认密码为123
+            UserDao userDao=new UserDao();
+            return userDao.Update(new UserEntity {Id = userId, Password = "123"})>0;
+        }
     }
 }

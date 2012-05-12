@@ -25,13 +25,13 @@ namespace Mis.Core.Dal
             if (null != obj)
             {
                 //通过反射获得实例里的字段
-                Type type = obj.GetType();
-                Hashtable ht = new Hashtable();
-                foreach (PropertyInfo pi in type.GetProperties())
-                {
-                    ht.Add(pi.Name, pi.GetValue(obj, null));
-                }
-
+                //Type type = obj.GetType();
+                //Hashtable ht = new Hashtable();
+                //foreach (PropertyInfo pi in type.GetProperties())
+                //{
+                //    ht.Add(pi.Name, pi.GetValue(obj, null));
+                //}
+                Hashtable ht = GetProperties(obj);
                 //开始构建SQL语句
                 string sql = String.Format("update {0} set", _tableName);
                 List<SqlParameter> par = new List<SqlParameter>();
