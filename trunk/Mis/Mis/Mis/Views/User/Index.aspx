@@ -5,6 +5,22 @@
 </asp:Content>
 <%@ Import Namespace="Mis.Core.Model" %>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+<script type="text/javascript">
+    function initUserPassword(userId) {
+
+        $.ajax({
+            url: '<%:Url.Action("InitUserPassword") %>',
+            type: "post",
+            data: "userId=" + userId,
+            datatype: "json",
+            success: function (msg) {
+                alert(msg);
+            },
+            error: function (err) { alert(err); }
+        });
+
+    }
+</script>
     <%var premission = ViewData["UserPremission"] as ResourceCacheModel; %>
     <table>
         <thead>
@@ -67,6 +83,8 @@
                     <%
                         }
                     %>
+                    &nbsp;&nbsp;
+                    <a href="javascript:initUserPassword(<%:user.UserId %>);">初始化密码</a>
                 </td>
             </tr>
             <%

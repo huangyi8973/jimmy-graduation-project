@@ -95,6 +95,7 @@
     <Compile Include="MisSession.cs" />
     <Compile Include="DBUtilty\SQLHelp.cs" />
     <Compile Include="UrlAuthorizeAttribute.cs" />
+    <Compile Include="Utilty\MD5Tool.cs" />
     <Compile Include="Utilty\UrlTools.cs" />
   </ItemGroup>
   <ItemGroup />
