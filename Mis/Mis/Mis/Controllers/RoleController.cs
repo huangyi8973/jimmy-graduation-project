@@ -111,7 +111,7 @@ namespace Mis.Controllers
         }
         public override string GetControllerName()
         {
-            return "user";
+            return "role";
         }
 
 

@@ -8,6 +8,7 @@ using System.Web.SessionState;
 using Mis.Core.Model;
 using System.Data;
 using Mis.Core.Dal;
+using Mis.Core.Utilty;
 
 namespace Mis.Core
 {
@@ -20,7 +21,7 @@ namespace Mis.Core
             LoginModel lm = userDao.GetLoginData(loginModel);
             if(null!=lm)
             {
-                if (lm.Password.Equals(loginModel.Password))
+                if (lm.Password.Equals(MD5Tool.Parse(loginModel.Password)))
                 {
                     isPass = true;
                     MisSession misSession = new MisSession();

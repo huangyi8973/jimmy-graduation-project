@@ -5,6 +5,7 @@ using System.Text;
 using Mis.Core.Dal;
 using Mis.Core.Entity;
 using Mis.Core.Model;
+using Mis.Core.Utilty;
 
 namespace Mis.Core.Bll
 {
@@ -58,7 +59,7 @@ namespace Mis.Core.Bll
             UserEntity userEntity = new UserEntity
                                         {
                                             UserName = vm.UserName,
-                                            Password = vm.Password
+                                            Password = MD5Tool.Parse(vm.Password)
                                         };
             if (userDao.IsExist(userEntity))
             {
@@ -182,7 +183,7 @@ namespace Mis.Core.Bll
         {
             //默认密码为123
             UserDao userDao=new UserDao();
-            return userDao.Update(new UserEntity {Id = userId, Password = "123"})>0;
+            return userDao.Update(new UserEntity {Id = userId, Password = MD5Tool.Parse("123")})>0;
         }
     }
 }

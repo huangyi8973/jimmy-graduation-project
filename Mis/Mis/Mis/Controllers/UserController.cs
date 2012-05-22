@@ -126,6 +126,16 @@ namespace Mis.Controllers
             return RedirectToAction("Index");
         }
 
+        public JsonResult InitUserPassword(int userId)
+        {
+            UserBll userBll=new UserBll();
+            bool result = false;
+            if(userId>0)
+            {
+                result = userBll.initUserPassword(userId);
+            }
+            return Json(result);
+        }
 
         public override string GetControllerName()
         {
