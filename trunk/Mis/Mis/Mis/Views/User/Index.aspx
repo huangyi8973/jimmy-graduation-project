@@ -7,14 +7,17 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 <script type="text/javascript">
     function initUserPassword(userId) {
-
         $.ajax({
             url: '<%:Url.Action("InitUserPassword") %>',
             type: "post",
             data: "userId=" + userId,
             datatype: "json",
             success: function (msg) {
-                alert(msg);
+                if (msg == true) {
+                    alert("初始化密码成功！初始化密码为：123");
+                } else {
+                    alert("初始化密码失败！");
+                }
             },
             error: function (err) { alert(err); }
         });

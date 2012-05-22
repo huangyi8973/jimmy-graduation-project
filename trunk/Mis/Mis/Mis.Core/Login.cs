@@ -32,7 +32,7 @@ namespace Mis.Core
                     }
                     else
                     {
-                        //已经有其他用户登录，把已经登录的用户踢掉
+                        //防止用户重复登录，同一账户后登录的用户可以把先登录的用户踢出系统
                         misSession.RemoveUser(lm.UserName);
                         misSession.SaveSession(lm,session);
                     }
