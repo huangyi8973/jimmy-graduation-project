@@ -35,15 +35,26 @@ namespace Mis.Core
 
         protected override bool AuthorizeCore(HttpContextBase httpContext)
         {
+            //验证是否有权限访问输入的URL
             bool result = true;
             //check user is in session(user have logined)
             MisSession session = new MisSession();
-            if (!session.SessionStateCheck(httpContext.Session))
+            //判断用户是否已经登录,返回3个状态：
+            //HAVE_LOGIN                    已经登录，且为当前会话
+            //ANOTHER_USER_LOGIN    已经被其他人登录
+            //NO_LOGIN                        没有登录
+            int loginState = session.SessionStateCheck(httpContext.Session);
+            if(loginState==MisSession.NO_LOGIN)
             {
                 result = false;
             }
+            else if(loginState==MisSession.ANOTHER_USER_LOGIN)
+            {
+                httpContext.Session.Clear();
+                result = false;
+            }
             //check authorize model(loginOnly,all)
-            if (checkModel.Equals(Model.All))
+            if (result&&checkModel.Equals(Model.All))
             {
                 //have logined
                 Cache cache = new Cache();

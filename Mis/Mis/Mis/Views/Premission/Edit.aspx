@@ -5,7 +5,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <script type="text/javascript">
         $(document).ready(function () {
-            CheckBoxOperation('<%:Model.Value %>');
+            //CheckBoxOperation('<%:Model.Value %>');
         });
         
         function CheckBoxOperation(value) {

@@ -2,7 +2,7 @@
 
 <%@ Import Namespace="Mis.Core.Model" %>
 <asp:Content ID="Content2" ContentPlaceHolderID="TitleContent" runat="server">
-    添加公告
+    公告管理
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <%var premission = ViewData["UserPremission"] as ResourceCacheModel; %>
