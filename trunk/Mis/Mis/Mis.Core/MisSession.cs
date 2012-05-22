@@ -13,12 +13,14 @@ namespace Mis.Core
 {
     public class MisSession
     {
-        public void SaveSession(LoginModel loginModel)
+        public void SaveSession(LoginModel loginModel,HttpSessionStateBase session)
         {
             //获取用户信息
             UserCacheModel userCacheModel=new UserCacheModel();
             userCacheModel.Id = loginModel.UserId.ToString();
             userCacheModel.UserName = loginModel.UserName;
+            //获得当前的session id;
+            userCacheModel.SessionId = session.SessionID;
             //获取角色信息
             RoleDao roleDao=new RoleDao();
             userCacheModel.Roles = roleDao.GetRolesByUserId(loginModel.UserId);
@@ -57,12 +59,34 @@ namespace Mis.Core
             cache.Add(loginModel.UserName,userCacheModel);
         }
 
+        //登录状态
+        public static int HAVE_LOGIN = 0; //已经登录
+        public static int ANOTHER_USER_LOGIN = 1;
+        public static int NO_LOGIN = 2;
 
-        public bool SessionStateCheck(HttpSessionStateBase session)
+        public int SessionStateCheck(HttpSessionStateBase session)
         {
+            
             if (session["UserName"] != null)
-                return true;
-            return false;
+            {
+               Cache cache=new Cache();
+               if (cache.GetUserCache(session["UserName"].ToString()).SessionId.Equals(session.SessionID))
+               {
+                   return HAVE_LOGIN;
+               }
+                return ANOTHER_USER_LOGIN;
+            }
+            return NO_LOGIN;
+        }
+
+        public int SessionStateCheck(HttpSessionStateBase session, String userName)
+        {
+            Cache cache=new Cache();
+           if(cache.GetUserCache(userName)!=null)
+           {
+               return ANOTHER_USER_LOGIN;
+           }
+            return SessionStateCheck(session);
         }
 
         public void RemoveUser(HttpSessionState session)
@@ -72,6 +96,14 @@ namespace Mis.Core
             {
                 cache.Remove(session["UserName"].ToString());
                 session.Clear();
+            }
+        }
+        public void RemoveUser(String userName)
+        {
+            Cache cache = new Cache();
+            if(!string.IsNullOrEmpty(userName))
+            {
+                cache.Remove(userName);
             }
         }
 

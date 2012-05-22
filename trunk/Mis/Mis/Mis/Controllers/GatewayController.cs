@@ -25,7 +25,7 @@ namespace Mis.Controllers
         public ActionResult Login(LoginModel loginModel, string url)
         {
             Mis.Core.Login login = new Login();
-            if (login.Check(loginModel))
+            if (login.Check(loginModel,Session))
             {
                 Session["UserName"] = loginModel.UserName;
                 return RedirectToAction("Index", "Home");
